@@ -1,19 +1,21 @@
 from random import randint
 
-
+from graphic_arts.start_game_banner import run_screensaver
 def attack(char_name: str, char_class: str) -> str:
+    """Описывает работу функции attack."""
     if char_class == 'warrior':
         return (f'{char_name} нанёс противнику урон, равный '
-                f'{5 + randint(3, 5)}')
+                f'{5 + max(0, randint(3, 5))}')
     if char_class == 'mage':
         return (f'{char_name} нанёс противнику урон, равный '
-                f'{5 + randint(5, 10)}')
+                f'{5 + max(0, randint(5, 10))}')
     if char_class == 'healer':
         return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + max(0, randint(-3, -1))}')
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Описывает работу функции defence."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} ед. урона')
     if char_class == 'mage':
@@ -23,6 +25,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Описывает работу функции special."""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 f'«Выносливость {80 + 25}»')
@@ -33,6 +36,7 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Описывает работу функции start_training."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — великий мастер ближнего боя.')
     if char_class == 'mage':
@@ -57,6 +61,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Описывает работу функции choice_char_class."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'Y':
@@ -78,7 +83,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main() -> None:
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
